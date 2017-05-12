@@ -1,0 +1,16 @@
+{
+  "name": "behmeh",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "get": "node-lambda run --handler=index.get",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Mehrad Sadegh",
+  "license": "MIT",
+  "dependencies": {
+    "node-lambda": "^0.10.0",
+    "phantom": "^4.0.3"
+  }
+}
