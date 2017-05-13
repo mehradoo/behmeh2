@@ -12,6 +12,6 @@
   "dependencies": {
     "cheerio": "^0.22.0",
     "node-lambda": "^0.10.0",
-    "phantom": "^4.0.3"
+    "request": "^2.81.0"
   }
 }

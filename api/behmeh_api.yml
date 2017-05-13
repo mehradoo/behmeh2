@@ -1,0 +1,74 @@
+swagger: '2.0'
+
+info:
+  version: "1.0.0"
+  title: Behmeh API
+  description: |
+    Behmeh Spike
+
+    ### Usage:
+    1. /selector get by CSS selector
+
+host: "todo.amazonaws.com"
+basePath: "/api"
+schemes:
+- "https"
+
+paths:
+
+  /selector:
+    get:
+      description: |
+        Get by CSS selector
+
+      parameters:
+        - name: url
+          in: query
+          description: URL to be scraped
+          required: true
+          type: string
+        - name: selector
+          in: query
+          description: CSS selector
+          required: false
+          type: string
+
+      produces:
+        - application/json
+      responses:
+        200:
+          description: TBA
+          headers:
+            Access-Control-Allow-Origin:
+              type: "string"
+        500:
+          description: Server error
+          headers:
+            Access-Control-Allow-Origin:
+              type: "string"
+      x-amazon-apigateway-integration:
+        responses:
+          default:
+            statusCode: "200"
+            responseParameters:
+              method.response.header.Access-Control-Allow-Origin: "'*'"
+          2\d{2}:
+            statusCode: "200"
+          5\d{2}:
+            statusCode: "500"
+
+        requestTemplates:
+          application/json: >
+            {
+              "url" : "$input.params('url')",
+
+              #set($selector = $input.params('selector'))
+              #if($selector && $selector.length() != 0)
+              	, "selector" : $selector
+              #end
+            }
+        uri: "arn:aws:apigateway:us-east-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-1:626197060234:function:behmeh/invocations"
+        passthroughBehavior: "when_no_match"
+        httpMethod: "POST"
+        contentHandling: "CONVERT_TO_TEXT"
+        type: "aws"
