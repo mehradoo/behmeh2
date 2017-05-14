@@ -9,10 +9,10 @@ info:
     ### Usage:
     1. /selector get by CSS selector
 
-host: "todo.amazonaws.com"
-basePath: "/api"
+host: "6qt8emo1x8.execute-api.us-east-1.amazonaws.com"
+basePath: "/sandbox"
 schemes:
-- "https"
+  - "https"
 
 paths:
 
@@ -52,19 +52,19 @@ paths:
             statusCode: "200"
             responseParameters:
               method.response.header.Access-Control-Allow-Origin: "'*'"
-          2\d{2}:
-            statusCode: "200"
+          204:
+            statusCode: "204"
           5\d{2}:
             statusCode: "500"
 
         requestTemplates:
           application/json: >
             {
-              "url" : "$input.params('url')",
+              "url" : "$input.params('url')"
 
               #set($selector = $input.params('selector'))
               #if($selector && $selector.length() != 0)
-              	, "selector" : $selector
+              	, "selector" : "$selector"
               #end
             }
         uri: "arn:aws:apigateway:us-east-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-1:626197060234:function:behmeh/invocations"
@@ -72,3 +72,14 @@ paths:
         httpMethod: "POST"
         contentHandling: "CONVERT_TO_TEXT"
         type: "aws"
+
+definitions:
+  Error:
+      type: object
+      properties:
+        code:
+          type: string
+        message:
+          type: string
+        description:
+          type: string

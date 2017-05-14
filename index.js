@@ -3,6 +3,8 @@ var request = require("request"),
 
 exports.get = (event, context, callback) => {
 
+    context.callbackWaitsForEmptyEventLoop = false;
+
     var url = event.url;
     var selector = event.selector;
     var result = {};
@@ -24,6 +26,7 @@ exports.get = (event, context, callback) => {
                 result.result = content;
             }
 
+            console.log("Result: " + JSON.stringify(result));
             callback(null, result);
         } else {
             console.log("ERROR: " + error);
