@@ -5,13 +5,17 @@
   "main": "index.js",
   "scripts": {
     "css-selector": "node-lambda run --handler=index.get",
-    "build": "node-lambda package --packageDirectory build"
+    "build": "node-lambda package --packageDirectory build",
+    "deploy": "serverless deploy"
   },
   "author": "Mehrad Sadegh",
   "license": "MIT",
   "dependencies": {
     "cheerio": "^0.22.0",
-    "node-lambda": "^0.10.0",
     "request": "^2.81.0"
+  },
+  "devDependencies": {
+    "node-lambda": "^0.10.0",
+    "serverless": "^1.13.2"
   }
 }
