@@ -4,3 +4,4 @@ node_modules
 .lambda/
 build/
 .serverless/
+npm-debug.log
