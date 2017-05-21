@@ -34,7 +34,7 @@ paths:
           type: string
 
       produces:
-        - application/json
+        - application/json; charset=utf-8
       responses:
         200:
           description: TBA

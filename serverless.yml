@@ -55,23 +55,24 @@ provider:
 #    - exclude-me-dir/**
 
 functions:
-  hello:
+  css-selector:
     handler: index.get
     events:
-          - http:
-              path: css-selector
-              method: get
-              request:
-                    template:
-                    application/json: >
-                      {
-                        "url" : "$input.params('url')"
+      - http:
+          path: css-selector
+          method: get
+#          request:
+#            template:
+#              application/json: >
+#                {
+#                  "url" : "$input.params('url')"
+#
+#                  #set($selector = $input.params('selector'))
+#                  #if($selector && $selector.length() != 0)
+#                      , "selector" : "$selector"
+#                  #end
+#                }
 
-                        #set($selector = $input.params('selector'))
-                        #if($selector && $selector.length() != 0)
-                            , "selector" : "$selector"
-                        #end
-                      }
 #    The following are a few example events you can configure
 #    NOTE: Please make sure to change your handler code to work with those events
 #    Check the event documentation for details
