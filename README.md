@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/mehradoo/behmeh2.svg?branch=master)](https://travis-ci.org/mehradoo/behmeh2)
+
 # Behmeh Lambda
 Run `npm install` to install dependencies
 
