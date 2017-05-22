@@ -56,7 +56,7 @@ provider:
 
 functions:
   css-selector:
-    handler: index.get
+    handler: index.byCssSelector
     events:
       - http:
           path: css-selector
