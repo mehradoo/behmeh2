@@ -4,8 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "css-selector": "node-lambda run --handler=index.get",
+    "css-selector": "node-lambda run --handler=index.byCssSelector",
     "build": "node-lambda package --packageDirectory build",
+    "test": "jasmine-node test",
     "deploy": "serverless deploy"
   },
   "author": "Mehrad Sadegh",
@@ -15,7 +16,10 @@
     "request": "^2.81.0"
   },
   "devDependencies": {
+    "jasmine-node": "^1.14.5",
     "node-lambda": "^0.10.0",
-    "serverless": "^1.13.2"
+    "proxyquire": "^1.8.0",
+    "serverless": "^1.13.2",
+    "sinon": "^2.2.0"
   }
 }
